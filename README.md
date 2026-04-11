@@ -1,24 +1,28 @@
 # InkFlow - Book Reading & Writing Platform
 
-InkFlow is a Flutter-based mobile application that provides a platform for reading and writing books. The app allows users to browse through books, follow authors, and maintain their personal library. Writers can create and publish their own stories with customizable chapters. This project is a collaborative semester assignment that will be enhanced with Firebase backend integration in future iterations.
+InkFlow is a comprehensive Flutter-based mobile application that provides a fully-featured platform for reading and writing books. Readers can browse through a large collection of books, follow their favorite authors, maintain a personal library, and track their reading analytics. Writers are provided with a dedicated suite of tools to create and publish stories, manage chapters, and even use AI to suggest creative book titles. The app is seamlessly integrated with Firebase for its robust backend, including authentication, real-time database, analytics, and AI capabilities.
 
 ## Features
 
 ### For Readers
-- **Book Discovery**: Browse through a collection of books with cover images
-- **Author Following**: Follow favorite authors to stay updated with their new releases
-- **Personal Library**: Save books to your personal library for easy access
-- **Book Details**: View comprehensive information about books including descriptions
-- **Search Functionality**: Search for books and authors throughout the app
+- **Book Discovery**: Browse through a collection of books with detailed views and cover images.
+- **Author Following**: Explore author profiles and follow favorite authors to stay updated with their new releases.
+- **Personal Library**: Save books to your personal library for easy access.
+- **Reading Analytics**: Track progress and engagement with detailed reading analytics.
+- **Search Functionality**: Discover new books and authors with the integrated search bar.
+- **Content Purchasing (UI Demo)**: Simulated purchase flow for premium chapters featuring mocked payment validation (Bank, JazzCash, EasyPaisa). No real transactions occur.
 
 ### For Writers
-- **Book Creation**: Create new books with title, description, and cover image
-- **Chapter Management**: Add and edit chapters for your books
-- **Content Pricing**: Set prices for individual chapters
-- **Writing Dashboard**: Manage all your written content in one place
+- **Book Creation**: Create new books with a title, description, and cover image.
+- **AI Title Generation**: Utilize Gemini AI (via `firebase_ai`) to auto-generate creative and catchy book titles based on story descriptions.
+- **Chapter Management**: Add, modify, and publish structured chapters for your books.
+- **Content Pricing & Analytics**: Set prices for premium chapters and monitor reading analytics for tracking engagement.
+- **Writing Dashboard**: A unified dashboard to manage all your written content.
 
-### User Authentication
-- **Sign Up/Login**: Create an account or log in to access personalized features
+### Backend & Security
+- **Firebase Authentication**: Secure account creation and login flow.
+- **Realtime Database**: Live syncing for user data, books, and purchases.
+- **Firebase Crashlytics & Analytics**: Monitoring performance, usage statistics, and application stability.
 
 ## Screenshots
 ![Picture 1](https://github.com/user-attachments/assets/0c25af0b-6087-4ad2-8e4a-5922fbed0e8c)
@@ -32,82 +36,68 @@ InkFlow is a Flutter-based mobile application that provides a platform for readi
 ## Technologies Used
 - **Framework**: Flutter
 - **Language**: Dart
-- **State Management**: StatefulWidget
+- **Backend/BaaS**: Firebase (Auth, Realtime Database, Analytics, Crashlytics)
+- **AI**: Firebase AI (Gemini Flash Model)
 - **UI Components**: Material Design
 - **Packages**:
-  - `google_fonts` - For custom typography
+  - `firebase_core`, `firebase_auth`, `firebase_database`, `firebase_analytics`, `firebase_crashlytics`
+  - `firebase_ai` - For Gemini AI generative text prompts
+  - `google_fonts` - For customized typography
   - `standard_searchbar` - For search functionality
-  - `image_picker` - For selecting book cover images
+  - `image_picker`, `image` - For selecting and managing book cover images and avatars
 
 ## Installation and Setup
 
 ### Prerequisites
-- Flutter SDK (latest stable version)
+- Flutter SDK (^3.7.0)
 - Android Studio or VS Code
-- An Android or iOS device/emulator
+- A configured Firebase project (ensure `google-services.json` and `GoogleService-Info.plist` are correctly placed)
 
 ### Steps
 1. Clone the repository
-   ```
+   ```bash
    git clone https://github.com/Romaisa-Munir/inkflow_mad_sem_project.git
    ```
 
 2. Navigate to the project directory
-   ```
+   ```bash
    cd inkflow_mad_sem_project
    ```
 
 3. Install dependencies
-   ```
+   ```bash
    flutter pub get
    ```
 
 4. Run the app
-   ```
+   ```bash
    flutter run
    ```
 
 ## Project Structure
+```text
+lib/
+├── data/                    # Sample data 
+├── models/                  # Data models (Author, Book, Chapter)
+├── pages/
+│   ├── Analytics/           # Book reading analytics views
+│   ├── authors/             # Author profiles and discovery pages
+│   ├── books/               # Book listing, detailing, and reading interface
+│   ├── home/                # Main home screen 
+│   ├── library/             # User's personal library 
+│   ├── login_signup/        # Authentication screens
+│   ├── payment/             # Payment processing dialogs
+│   ├── profile/             # User profile and settings
+│   ├── AddChapterPage.dart  # Form for writers to add chapters
+│   ├── BookDetailsPage.dart # Main display of a book
+│   ├── create_book_page.dart# Form to initiate a new book
+│   └── writing_dashboard.dart # Central hub for writers
+├── services/                # Backend interaction (AI, Author, Payment, Reading Analytics)
+├── theme/                   # Global app theme and styling
+├── widgets/                 # Reusable UI components (book_card, chapter_card)
+├── firebase_options.dart    # Firebase config setup
+└── main.dart                # Application entry point & routing 
 ```
-inkflow_mad_sem_project/
-├── .dart_tool/
-├── .idea/
-├── android/
-├── assets/
-├── build/
-├── lib/
-│   ├── models/
-│   │   ├── book_model.dart
-│   │   └── chapter_model.dart
-│   ├── pages/
-│   │   ├── login_signup/
-│   │   │   ├── login_screen.dart
-│   │   │   └── signup_screen.dart
-│   │   ├── profile/
-│   │   ├── AddChapterPage.dart
-│   │   ├── BookDetailsPage.dart
-│   │   ├── create_book_page.dart
-│   │   └── writing_dashboard.dart
-│   ├── widgets/
-│   │   ├── book_card.dart
-│   │   └── chapter_card.dart
-│   └── main.dart
-```
-
-## Current Status
-- Frontend implementation complete with navigation and UI elements
-- User authentication screens implemented
-- Book browsing and creation functionality
-- Author profiles and following system
-- Chapter creation and management for writers
-
-## Future Plans
-- Firebase integration for backend functionality
-- User authentication with Firebase Auth
-- Cloud storage for book covers and content
-- Real-time updates for new book releases
-- Social features such as comments and ratings
-- Payment integration for purchasing books
 
 ## Contributors
 - **Romaisa Munir** ([@Romaisa-Munir](https://github.com/Romaisa-Munir))
@@ -116,5 +106,4 @@ inkflow_mad_sem_project/
 ## License
 
 This project is for educational purposes.
-
 - [GitHub Repository](https://github.com/Romaisa-Munir/WebTechSemProject)
